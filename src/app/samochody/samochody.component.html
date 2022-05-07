@@ -1,0 +1,6 @@
+<p>Moje samochody:</p>
+<ul *ngIf="carItems">
+ <li *ngFor="let car of carItems; let i = index">
+ {{ i + 1 }}) {{car}}
+ </li>
+</ul>
