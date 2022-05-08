@@ -1,36 +1,31 @@
-import { CssSelector } from '@angular/compiler';
-import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
-import { DaneOsobowe } from './DaneOsobowe';
 import { Samochod } from './samochod';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
 
-car1 = new Samochod("Mitsubishi", "Lancer", 2004);
+export class AppComponent implements OnInit {
 
+  car1 = new Samochod("Mitsubishi", "Lancer", 2004);    // tworzymy instancje klasy "Samochod" i przypisujemy właśności
+  car2 = new Samochod("Dacia", "Logan", 2017);
+  car3 = new Samochod("Toyota", "Auris", 2020);
+  car4 = new Samochod("Fiat", "126p", 1986);
 
- /* constructor(marka, model, rok){
-    marka = this.marka;
-    model = this.model;
-    rok = this.rok;
-  }*/
+  cars = [];    // deklarujemy pustą tablicę "cars"
 
-cars=[this.car1.properties];
+  ngOnInit(): void {
+    
+    this.cars = [                   // podczas inicjalizacji komponentu przypisujemy do tablicy "cars" utworzone wcześniej obiekty (instancje klasy "Samochod")
+      this.car1.properties(),       // i wywołujemy metodę "properties()", zwracającą ich własności
+      this.car2.properties(),
+      this.car3.properties(),
+      this.car4.properties()
+    ];
+   
+  }
 
 }
-
-//"Mitsubishi", "Lancer", 2004
-
-//"Dacia", "Logan", 2017
-
-//Toyota", "Auris", 2020
-
-//"Fiat", "126p", 1986
 
 // change check for github.
